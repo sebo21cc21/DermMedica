@@ -1,0 +1,52 @@
+html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    background: url("../img/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.shadow-custom {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+hr {
+    opacity: 0.3 !important;
+}
+
+figure {
+    border-left: .35rem solid #fcdb5e;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+@media screen and (max-width: 576px) {
+    .camera-container {
+      width: 100%;
+    }
+    #camera-stream {
+      width: 100%;
+      height: auto;
+    }
+    #picture-canvas {
+      max-width: 100%;
+      height: auto;
+    }
+    .picture-gallery-container {
+        max-width: 100%;
+        overflow-x: auto;
+      }
+      .picture-gallery-container ul.list-group li {
+        max-width: 50%;
+        display: inline-block;
+        margin-right: 5px;
+      }
+  }

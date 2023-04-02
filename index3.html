@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Aplikacja dermatologiczna</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Start your project here-->
+
+    <!--Main Navigation-->
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SkinScanner</a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"
+                            href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index.html?#!">Strona
+                            główna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index2.html#">Analiza
+                            skóry</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"
+                            href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index3.html#">Raporty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index4.html?#">Porady</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            Zapis na wizytę
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>
+                                <a class="dropdown-item" href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index5.html?#">Profil użytkownika</a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index6.html?#">Konsultacje z dermatologiem</a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="file:///C:/Users/sebo2/OneDrive/Dokumenty/GitHub/Advanced_Web_Technologies/list3_Bootstrap_MD/index7.html?#">Gra dla dzieci</a>
+                              </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex input-group w-auto">
+                    <input type="search" class="form-control rounded" placeholder="Wyszukaj" aria-label="Search"
+                        aria-describedby="search-addon" />
+                    <a href="#">
+                        <span class="input-group-text text-white border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!--CODE-->
+    <main class="mt-5">
+        <div class="container">
+            <br>
+            <h1>Zdjęcia</h1>
+            <!-- Formularz do wyboru zdjęcia z pulpitu -->
+            <form>
+                <div class="mb-3">
+                    <label for="zdjecie" class="form-label">Wybierz zdjęcie</label>
+                    <input class="form-control" type="file" id="zdjecie" accept=".jpg">
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="analizuj()">Analizuj</button>
+            </form>
+            <!-- Div do wyświetlenia zdjęć -->
+
+            <!-- Div do wyświetlenia zdjęć po analizie -->
+            <div id="zdjecia-po-analizie" class="row">
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <h2>Tworzenie raportów PDF</h2>
+            <p>Przycisk poniżej pozwoli na utworzenie raportu PDF dla pacjenta kliniki dermatologicznej, w którym znajdą
+                się trzy zdjęcia przed, po i w trakcie leczenia.</p>
+            <button type="button" class="btn btn-primary" id="show-report-button">Utwórz raport PDF</button>
+        </div>
+    </main>
+
+
+
+    <!-- Importowanie plików JavaScript Bootstrap -->
+    <script src="https://unpkg.com/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js">
+    </script>
+    <!-- Skrypt do analizy zdjęć -->
+    <script>
+        function analizuj() {
+            // Pobranie nazwy wybranego zdjęcia
+            const fileInput = document.getElementById("zdjecie");
+            const nazwaZdjecia = document.getElementById("zdjecie").files[0].name;
+            const showReport = () => {
+                const reportIframe = document.createElement('iframe');
+                reportIframe.src = 'https://docs.google.com/document/d/1g_Qg61_rUCOtaspiend6N0i8E1uZk6NF/edit';
+                reportIframe.classList.add('w-100');
+                reportIframe.height = '900';
+                document.body.appendChild(reportIframe);
+            };
+            const showReportButton = document.getElementById('show-report-button');
+            let zdjeciaPoAnalizie = "";
+            // W zależności od nazwy wybranego zdjęcia, wybierz odpowiednie zdjęcia do wyświetlenia po analizie
+            switch (nazwaZdjecia) {
+                case "1.jpg":
+                    zdjeciaPoAnalizie =
+                        '<div class="col-sm-4"><h4>Przed</h4><img src="img/1.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Defekt</h4><img src="img/1edit.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Efekt końcowy</h4><img src="img/1end.jpg" class="img-fluid"></div>';
+                    break;
+                case "2.jpg":
+                    zdjeciaPoAnalizie =
+                        '<div class="col-sm-4"><h4>Przed</h4><img src="img/2.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Defekt</h4><img src="img/2edit.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Efekt końcowy</h4><img src="img/2end.jpg" class="img-fluid"></div>';
+                    break;
+                case "3.jpg":
+                    zdjeciaPoAnalizie =
+                        '<div class="col-sm-4"><h4>Przed</h4><img src="img/3.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Defekt</h4><img src="img/3edit.jpg" class="img-fluid"></div><div class="col-sm-4"><h4>Efekt końcowy</h4><img src="img/3end.jpg" class="img-fluid"></div>';
+                    break;
+                default:
+                    // Jeśli nie wybrano zdjęcia lub wybrano zdjęcie o niepoprawnym formacie, wyświetl komunikat
+                    alert("Wybierz zdjęcie w formacie .jpg");
+                    return;
+            }
+            // Wstawienie wybranych zdjęć do div-a o id "zdjecia-po-analizie"
+            document.getElementById("zdjecia-po-analizie").innerHTML = zdjeciaPoAnalizie;
+            showReportButton.addEventListener('click', showReport);
+        }
+    </script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+
+</html>
