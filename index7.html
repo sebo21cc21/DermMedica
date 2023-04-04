@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Aplikacja dermatologiczna</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+      div2 {
+          position: absolute;
+      }
+
+
+      .mini1 {
+          border: cornsilk 2px solid;
+          top: 50px;
+          height: 98px;
+          width: 98px
+      }
+
+      #ekran {
+          width: 500px;
+          height: 500px;
+          top: 200px;
+          left: 50px;
+      }
+
+      img {
+          width: 98px;
+          height: 98px;
+      }
+      .ruchy {
+          text-align: center;
+          height: 100px;
+          width: 300px;
+          font-size: 30px;
+          top: 250px;
+          left: 425px;
+          font-weight: 900;
+      }
+
+  </style>
+
+  <script>
+    var TabId = ['a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12', 'a13', 'a14', 'a15', 'a16', 'a17', 'a18', 'a19', 'a20'];
+    var TabImg = ['zdjęcie1', 'zdjęcie1', 'zdjęcie2', 'zdjęcie2', 'zdjęcie3', 'zdjęcie3', 'zdjęcie4', 'zdjęcie4', 'zdjęcie5', 'zdjęcie5', 'zdjęcie6', 'zdjęcie6', 'zdjęcie7', 'zdjęcie7', 'zdjęcie8', 'zdjęcie8', 'zdjęcie9', 'zdjęcie9', 'zdjęcie10', 'zdjęcie10'];
+    var TabImage = ['zdjęcie1', 'zdjęcie2', 'zdjęcie3', 'zdjęcie4', 'zdjęcie5', 'zdjęcie6', 'zdjęcie7', 'zdjęcie8', 'zdjęcie9', 'zdjęcie10'];
+    function Zakryj() {
+        for (var i = 0; i <= 19; i++)
+            document.getElementById(TabId[i]).innerHTML = "<img src='img/image/zdjęcie11.png'>"
+    }
+
+    function Odkryj(x) {
+        for (var i = 0; i < 20; i++)
+            if (x == document.getElementById(TabId[i]))
+                x.innerHTML = "<img src=img/image/" + TabImg[i] + ".jpg>";
+    }
+    function Mieszaj() {
+        var TabPos = [[50, 50, 0], [50, 150, 0], [50, 250, 0], [50, 350, 0], [50, 450, 0], [150, 50, 0], [150, 150, 0], [150, 250, 0], [150, 350, 0], [150, 450, 0], [250, 50, 0], [250, 150, 0], [250, 250, 0], [250, 350, 0], [250, 450, 0], [350, 50, 0], [350, 150, 0], [350, 250, 0], [350, 350, 0], [350, 450, 0]];
+        var i = 0;
+        while (i < 20) {
+            var x = Math.floor(Math.random() * 20);
+            if (TabPos[x][2] == 0) {
+                document.getElementById(TabId[i]).style.left = TabPos[x][0] + 'px';
+                document.getElementById(TabId[i]).style.top = TabPos[x][1] + 'px';
+                TabPos[x][2] = 1;
+                i++;
+            }
+        }
+    }
+    var ruch = 0;
+    var win = 0;
+    var p = 0;
+    var one, two, id1, id2;
+    function Graj(x, y) {
+        if (p == 0) {
+            Zakryj();
+            Odkryj(x);
+            one = x;
+            id1 = y;
+            p = 1;
+        }
+        else {
+            Odkryj(x);
+            two = x;
+            id2 = y;
+            ruch++;
+
+            document.getElementById("ruch").innerHTML = ruch;
+            p = 0;
+
+            if (one.innerHTML == two.innerHTML && id1 != id2) {
+                one.style.visibility = "hidden";
+                two.style.visibility = "hidden";
+                win++;
+                if (win == 10) {
+                    alert("Wygrana po twojej stronie!!! Jeszcze raz?");
+                }
+            }
+        }
+    }
+  </script>
+  </head>
+  <body>
+    <!-- Start your project here-->
+
+    <!--Main Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">SkinScanner</a>
+          <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+          >
+          <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Strona główna</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index2.html">Analiza skóry</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index3.html">Raporty</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index4.html">Porady</a>
+              </li>
+              <li class="nav-item dropdown">
+              <a
+                      class="nav-link dropdown-toggle active"
+                      href="#"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-mdb-toggle="dropdown"
+                      aria-expanded="false"
+              >
+                  Zapis na wizytę
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="index5.html">Profil użytkownika</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="index6.html">Konsultacje z dermatologiem</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="index7.html">Gra dla dzieci</a>
+                </li>
+              </ul>
+              </li>
+          </ul>
+          <form class="d-flex input-group w-auto">
+              <input
+                      type="search"
+                      class="form-control rounded"
+                      placeholder="Wyszukaj"
+                      aria-label="Search"
+                      aria-describedby="search-addon"
+              />
+              <a href="#">
+              <span class="input-group-text text-white border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+              </span>
+              </a>
+          </form>
+          </div>
+      </div>
+      </nav>
+        <!--CODE-->
+    <main class="mt-5">
+      <br>
+        <div2 class="container">
+          <form name="form1" style="position:absolute; left:50px;">
+            <input type="button" class="btn btn-primary" value="Zakryj" onclick="Zakryj()">
+            <input type="button" class="btn btn-primary" value="Mieszaj" onclick="Mieszaj()">
+            <input type="button" class="btn btn-primary" onClick="window.location.reload();" value="Ponów grę">
+        </form>
+        <br><br>
+        <div2 class="ruchy">
+            <p>Liczba ruchów = <span id="ruch">0</span></p>
+        </div2>
+        <div2 id="a1" class="mini1" style="left: 50px; top: 50px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie1.jpg">
+        </div2>
+        <div2 id="a2" class="mini1" style="left: 50px; top:150px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie1.jpg">
+        </div2>
+        <div2 id="a3" class="mini1" style="left: 50px; top:250px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie2.jpg">
+        </div2>
+        <div2 id="a4" class="mini1" style="left: 50px; top:350px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie2.jpg">
+        </div2>
+        <div2 id="a5" class="mini1" style="left: 50px; top: 450px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie3.jpg">
+        </div2>
+        <div2 id="a6" class="mini1" style="left: 150px; top: 50px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie3.jpg">
+        </div2>
+        <div2 id="a7" class="mini1" style="left: 150px; top: 150px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie4.jpg">
+        </div2>
+        <div2 id="a8" class="mini1" style="left: 150px; top: 250px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie4.jpg">
+        </div2>
+        <div2 id="a9" class="mini1" style="left: 150px; top: 350px" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie5.jpg">
+        </div2>
+        <div2 id="a10" class="mini1" style="left: 150px; top: 450px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie5.jpg">
+        </div2>
+        <div2 id="a11" class="mini1" style="left: 250px; top: 50px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie6.jpg">
+        </div2>
+        <div2 id="a12" class="mini1" style="left: 250px; top: 150px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie6.jpg">
+        </div2>
+        <div2 id="a13" class="mini1" style="left: 250px; top: 250px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie7.jpg">
+        </div2>
+        <div2 id="a14" class="mini1" style="left: 250px; top: 350px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie7.jpg">
+        </div2>
+        <div2 id="a15" class="mini1" style="left: 250px; top: 450px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie8.jpg">
+        </div2>
+        <div2 id="a16" class="mini1" style="left: 350px; top: 50px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie8.jpg">
+        </div2>
+        <div2 id="a17" class="mini1" style="left: 350px; top: 150px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie9.jpg">
+        </div2>
+        <div2 id="a18" class="mini1" style="left: 350px; top: 250px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie9.jpg">
+        </div2>
+        <div2 id="a19" class="mini1" style="left: 350px; top: 350px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie10.jpg">
+        </div2>
+        <div2 id="a20" class="mini1" style="left: 350px; top: 450px;" onclick="Graj(this,this)">
+            <img src="img/image/zdjęcie10.jpg">
+        </div2>
+        </div2>
+    </main>
+
+
+
+    <!-- Importowanie plików JavaScript Bootstrap -->
+    <script src="https://unpkg.com/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js">
+    </script>
+    <!-- Skrypt do analizy zdjęć -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</body>
+</html>

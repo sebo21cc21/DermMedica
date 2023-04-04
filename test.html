@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analiza trądziku młodzieńczego</title>
+	<style>
+		img {
+			max-width: 100%;
+		}
+
+		.circle {
+			position: absolute;
+			border-radius: 50%;
+			background-color: red;
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<h1>Analiza trądziku młodzieńczego</h1>
+
+	<form>
+		<input type="file" id="imageUpload" accept=".jpg, .jpeg, .png">
+		<button type="button" id="analyzeButton">Analizuj</button>
+	</form>
+
+	<div id="imageWrapper">
+		<img id="uploadedImage" src="">
+		<div id="analysisResults"></div>
+	</div>
+
+	<script>
+		// funkcja, która rysuje kółko wokół krostki
+		function drawCircle(x, y) {
+			let circle = document.createElement("div");
+			circle.className = "circle";
+			circle.style.top = y + "px";
+			circle.style.left = x + "px";
+			document.getElementById("imageWrapper").appendChild(circle);
+		}
+
+		window.onload = function() {
+			let imageUpload = document.getElementById("imageUpload");
+			let uploadedImage = document.getElementById("uploadedImage");
+			let analyzeButton = document.getElementById("analyzeButton");
+			let analysisResults = document.getElementById("analysisResults");
+
+			imageUpload.onchange = function() {
+				let reader = new FileReader();
+				reader.onload = function(event) {
+					uploadedImage.src = event.target.result;
+					uploadedImage.onload = function() {
+						// wyczyszczenie wyników analizy
+						analysisResults.innerHTML = "";
+
+						// po kliknięciu w przycisk "Analizuj" wykonaj analizę zdjęcia, znajdź krostki i wyświetl wyniki
+						analyzeButton.onclick = function() {
+							let canvas = document.createElement("canvas");
+							canvas.width = uploadedImage.width;
+							canvas.height = uploadedImage.height;
+
+							let context = canvas.getContext("2d");
+							context.drawImage(uploadedImage, 0, 0);
+
+							let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+							let data = imageData.data;
+
+							let results = [];
+
+							for (let i = 0; i < data.length; i += 4) {
+								let red = data[i];
+								let green = data[i+1];
+								let blue = data[i+2];
+
+								// kolor krostki (jasnoczerwony)
+								if (red > 220 && green < 100 && blue < 100) {
+									let x = (i/4) % canvas.width;
+									let y = Math.floor((i/4) / canvas.width);
+									drawCircle(x, y);
+									results.push({x: x, y: y});
+								}
+							}
+
+							// wyświetlenie wyników analizy
+							let resultText = "Liczba znalezionych krostek: " + results.length;
+							analysisResults.innerHTML = resultText;
+						}
+					}
+				}
+				reader.readAsDataURL(event.target.files[0]);
+			}
+		}
+	</script>
+</body>
+</html>

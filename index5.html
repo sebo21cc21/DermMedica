@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Aplikacja dermatologiczna</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Start your project here-->
+
+    <!--Main Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="#">SkinScanner</a>
+          <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+          >
+          <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Strona główna</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index2.html">Analiza skóry</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index3.html">Raporty</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="index4.html">Porady</a>
+              </li>
+              <li class="nav-item dropdown">
+              <a
+                      class="nav-link active dropdown-toggle"
+                      href="#"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-mdb-toggle="dropdown"
+                      aria-expanded="false"
+              >
+                  Zapis na wizytę
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="index5.html">Profil użytkownika</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="index6.html">Konsultacje z dermatologiem</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="index7.html">Gra dla dzieci</a>
+                </li>
+              </ul>
+              </li>
+          </ul>
+          <form class="d-flex input-group w-auto">
+              <input
+                      type="search"
+                      class="form-control rounded"
+                      placeholder="Wyszukaj"
+                      aria-label="Search"
+                      aria-describedby="search-addon"
+              />
+              <a href="#">
+              <span class="input-group-text text-white border-0" id="search-addon">
+              <i class="fas fa-search"></i>
+              </span>
+              </a>
+          </form>
+          </div>
+      </div>
+      </nav>
+        <!--CODE-->
+    <main class="mt-5">
+        <div class="container">
+          <div class="container mt-5">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title">Profil użytkownika</h3>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" class="img-fluid  rounded-circle">
+                      </div>
+                      <div class="col-md-8">
+                        <h5 class="card-text">Anna Nowak</h5>
+                        <p class="card-text">pesel: 01010101010 data ur.: 01-01-2005 <br> <u>Zdiagnozowano:</u> Trądzik młodzieńczy</p>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h6>Adres e-mail:</h6>
+                        <p>anna.nowak@example.com</p>
+                        <h6>Numer telefonu:</h6>
+                        <p>(555) 555-5555</p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edytuj-kontakt-modal">Edytuj dane kontaktowe</button>
+                      </div>
+                      <div class="col-md-6">
+                        <h6>Adres:</h6>
+                        <p> ul. Uliczna 11, <br>05-440 Wrocław
+                        </p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edytuj-adres-modal">Edytuj adres</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="edytuj-kontakt-modal" tabindex="-1" aria-labelledby="edytuj-kontakt-modal-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="edytuj-kontakt-modal-label">Edytuj dane kontaktowe</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="email-input" class="form-label">Adres e-mail:</label>
+                    <input type="email" class="form-control" id="email-input" value="jan.kowalski@example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone-input" class="form-label">Numer telefonu:</label>
+                    <input type="tel" class="form-control" id="phone-input" value="(555) 555-5555">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="edytuj-kontakt-modal-zapisz">Zapisz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edytuj adres Modal -->
+        <div class="modal fade" id="edytuj-adres-modal" tabindex="-1" aria-labelledby="edytuj-adres-modal-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="edytuj-adres-modal-label">Edytuj adres</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="address-input" class="form-label">Adres:</label>
+                    <textarea class="form-control" id="address-input" rows="3">ul. Kolejowa 1, 00-001 Warszawa</textarea>
+        </div>
+        </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="edytuj-adres-modal-zapisz">Zapisz</button>
+        </div>
+        </div>
+        </div>
+        </div>
+
+    </main>
+
+
+
+    <!-- Importowanie plików JavaScript Bootstrap -->
+    <script src="https://unpkg.com/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js">
+    </script>
+    <!-- Skrypt do analizy zdjęć -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script>
+      document.getElementById('edytuj-kontakt-modal-zapisz').addEventListener('click', function() {
+      // pobierz wartości pól formularza
+      var email = document.getElementById('email-input').value;
+      var phone = document.getElementById('phone-input').value;
+
+      // aktualizuj elementy w profilu
+      document.getElementById('email').innerText = email;
+      document.getElementById('phone').innerText = phone;
+    });
+
+    document.getElementById('edytuj-adres-modal-zapisz').addEventListener('click', function() {
+    // pobierz wartość pola formularza
+      var address = document.getElementById('address-input').value;
+
+      // aktualizuj element w profilu
+      document.getElementById('address').innerText = address;
+    });
+    </script>
+</body>
+</body>
+</html>
